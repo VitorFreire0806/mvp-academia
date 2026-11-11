@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULSO — Ginásio · Musculação, Aulas de Grupo e Personal Training</title>
+<meta name="description" content="Ginásio em Lisboa com musculação, treino funcional, cycling, yoga, boxe e personal training. Experimente grátis durante 7 dias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0f10;
+    --bg-2:#15181a;
+    --bg-3:#1d2124;
+    --lime:#c8ff3d;
+    --lime-dark:#a8e01c;
+    --white:#f4f6f5;
+    --muted:#9aa3a6;
+    --line:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{display:block;width:100%;height:100%;object-fit:cover;color:transparent}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:Oswald,Impact,sans-serif;font-weight:700;text-transform:uppercase;line-height:1.02;letter-spacing:.01em}
+  .container{width:min(1560px,92%);margin-inline:auto}
+  section{padding:110px 0}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:16px}
+  .eyebrow::before{content:"";width:28px;height:3px;background:var(--lime)}
+  .section-head{max-width:900px;margin:0 0 56px}
+  .section-head.center{text-align:center;margin:0 auto 56px}
+  .section-head h2{font-size:clamp(2.6rem,5.4vw,4.8rem)}
+  .section-head h2 span{color:var(--lime)}
+  .section-head p{color:var(--muted);margin-top:16px;font-size:1.08rem;max-width:680px}
+  .section-head.center p{margin-inline:auto}
+  .ph{background:linear-gradient(135deg,#1f2427,#121517);overflow:hidden;position:relative}
+  .ph img{transition:transform .9s ease}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 32px;font-family:Oswald,sans-serif;font-size:1.02rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--lime);cursor:pointer;transition:background .25s,color .25s,transform .2s}
+  .btn-lime,.btn-wa,.plan.featured .btn{clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-lime{background:var(--lime);color:#0d0f10}
+  .btn-lime:hover{background:var(--lime-dark);border-color:var(--lime-dark)}
+  .btn-line{background:transparent;color:var(--white);border-color:rgba(255,255,255,.4)}
+  .btn-line:hover{border-color:var(--lime);color:var(--lime)}
+  .btn-wa{background:#25d366;border-color:#25d366;color:#fff}
+
+  /* NAV */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s}
+  header.scrolled{background:rgba(13,15,16,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px;gap:20px}
+  .logo{font-family:Oswald,sans-serif;font-size:2rem;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+  .logo .bolt{width:40px;height:40px;background:var(--lime);color:#0d0f10;display:grid;place-items:center;font-size:1.2rem;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+  .nav ul{display:flex;gap:34px;list-style:none;font-weight:600;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase}
+  .nav ul a:hover{color:var(--lime)}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-right .btn{padding:12px 22px;font-size:.92rem}
+  .menu-toggle{display:none;background:none;border:0;font-size:1.8rem;cursor:pointer;color:var(--white)}
+
+
+  /* IDIOMAS */
+  .lang{position:relative}
+  .lang-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,.3);background:transparent;color:var(--white);font:inherit;font-weight:600;font-size:.82rem;letter-spacing:.08em;cursor:pointer;transition:.3s}
+  .lang-btn:hover{border-color:var(--lime)}
+  .flag{width:22px;height:16px;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.15);flex:none}
+  .caret{font-size:.6rem;opacity:.7}
+  .nav ul.lang-menu{display:block;gap:0;font-size:.92rem;letter-spacing:0;text-transform:none}
+  .lang-menu{position:absolute;right:0;top:calc(100% + 12px);background:var(--bg-2);border:1px solid var(--line);box-shadow:0 18px 44px rgba(0,0,0,.28);list-style:none;padding:8px;min-width:210px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:.25s;z-index:70}
+  .lang.open .lang-menu{opacity:1;visibility:visible;transform:none}
+  .lang-menu button{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:0;background:none;font:inherit;color:var(--white);cursor:pointer;text-align:left}
+  .lang-menu button:hover{background:var(--bg-3)}
+  .lang-menu button.active{background:var(--bg-3);color:var(--lime);font-weight:700}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 110px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:-2}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,15,16,.95) 0%,rgba(13,15,16,.75) 45%,rgba(13,15,16,.25) 100%),linear-gradient(0deg,var(--bg) 0%,transparent 30%)}
+  .hero h1{font-size:clamp(3.6rem,9vw,8.6rem);max-width:1000px;margin-bottom:30px;line-height:1.08}
+  .hero h1 span{color:var(--lime);display:block}
+  .hero p{font-size:1.2rem;color:#c9d0d2;max-width:580px;margin-bottom:38px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:56px;margin-top:64px;flex-wrap:wrap}
+  .hero-stats strong{display:block;font-family:Oswald,sans-serif;font-size:3rem;color:var(--lime);line-height:1}
+  .hero-stats span{color:var(--muted);font-size:.92rem;text-transform:uppercase;letter-spacing:.08em}
+  .badge-free{position:absolute;right:6%;bottom:14%;width:190px;height:190px;border-radius:50%;background:var(--lime);color:#0d0f10;display:grid;place-items:center;text-align:center;font-family:Oswald,sans-serif;text-transform:uppercase;line-height:1.05;transform:rotate(-12deg);animation:spin 16s linear infinite}
+  .badge-free b{display:block;font-size:2.8rem}
+  .badge-free span{font-size:1rem;letter-spacing:.06em}
+  @keyframes spin{50%{transform:rotate(8deg) scale(1.04)}}
+
+  /* MODALIDADES */
+  .mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .mod{position:relative;height:clamp(360px,26vw,480px);overflow:hidden}
+  .mod .ph{position:absolute;inset:0}
+  .mod::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,15,16,.95) 0%,rgba(13,15,16,.2) 60%)}
+  .mod:hover img{transform:scale(1.07)}
+  .mod-body{position:absolute;left:0;right:0;bottom:0;padding:30px;z-index:2}
+  .mod .tag{display:inline-block;background:var(--lime);color:#0d0f10;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px}
+  .mod h3{font-size:2.2rem;margin-bottom:6px}
+  .mod p{color:#c9d0d2;font-size:.97rem;max-width:420px}
+
+  /* FEATURES */
+  .features{background:var(--bg-2)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .feat{background:var(--bg-2);padding:40px 36px;transition:background .3s}
+  .feat:hover{background:var(--bg-3)}
+  .feat .ic{font-size:2rem;margin-bottom:16px}
+  .feat h3{font-size:1.5rem;margin-bottom:8px}
+  .feat p{color:var(--muted)}
+
+  /* PLANOS */
+  .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1340px;margin:0 auto}
+  .plan{background:var(--bg-2);border:1px solid var(--line);padding:42px 36px;display:flex;flex-direction:column;position:relative}
+  .plan.featured{background:var(--lime);color:#0d0f10;border-color:var(--lime)}
+  .plan .pop{position:absolute;top:-14px;left:36px;background:#0d0f10;color:var(--lime);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px}
+  .plan h3{font-size:2rem}
+  .plan .desc{color:var(--muted);margin-top:4px}
+  .plan.featured .desc{color:#2b3307}
+  .plan .price{font-family:Oswald,sans-serif;font-size:3.6rem;font-weight:700;line-height:1;margin:24px 0 4px}
+  .plan .price small{font-size:1.1rem;font-weight:500;opacity:.7}
+  .plan ul{list-style:none;display:grid;gap:12px;margin:24px 0 34px;flex:1}
+  .plan li{display:flex;gap:10px}
+  .plan li::before{content:"✓";color:var(--lime);font-weight:800}
+  .plan.featured li::before{color:#0d0f10}
+  .plan .btn{width:100%}
+  .plan.featured .btn{background:#0d0f10;color:var(--lime);border-color:#0d0f10}
+  .plans-note{text-align:center;color:var(--muted);margin-top:34px}
+  .plans-note b{color:var(--lime)}
+
+  /* HORÁRIO */
+  .schedule{background:var(--bg-2)}
+  .table-wrap{overflow-x:auto;border:1px solid var(--line)}
+  table.sched{width:100%;border-collapse:collapse;min-width:900px}
+  .sched th,.sched td{padding:16px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);text-align:center;font-size:.92rem}
+  .sched th{font-family:Oswald,sans-serif;font-size:1.05rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg-3);color:var(--lime)}
+  .sched td.time{font-family:Oswald,sans-serif;font-size:1.1rem;color:var(--white);background:var(--bg-3)}
+  .sched td span{display:inline-block;padding:6px 10px;background:rgba(200,255,61,.08);color:#e6ffad;font-weight:600}
+  .sched td.empty{color:#4a5155}
+
+  /* TREINADORES */
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .coach .ph{height:clamp(420px,30vw,540px);filter:grayscale(.4);transition:filter .4s}
+  .coach:hover .ph{filter:none}
+  .coach h3{font-size:1.9rem;margin-top:20px}
+  .coach span{color:var(--lime);font-weight:600;font-size:.92rem;text-transform:uppercase;letter-spacing:.08em}
+
+  /* TESTEMUNHOS */
+  .testi{background:var(--bg-2)}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .t-card{background:var(--bg-3);padding:36px;border-left:4px solid var(--lime)}
+  .t-card .result{font-family:Oswald,sans-serif;font-size:2.4rem;color:var(--lime);text-transform:uppercase;line-height:1}
+  .t-card .result small{display:block;font-family:Inter,sans-serif;font-size:.8rem;color:var(--muted);letter-spacing:.1em;margin-top:6px}
+  .t-card p{margin:20px 0;font-size:1.05rem;color:#d7dddf}
+  .t-card strong{font-weight:700}
+  .t-card em{display:block;font-style:normal;color:var(--muted);font-size:.9rem}
+
+  /* EXPERIMENTAR */
+  .trial-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--bg-2);border:1px solid var(--line)}
+  .trial-grid .ph{min-height:640px}
+  .trial-form{padding:clamp(34px,5vw,80px)}
+  .trial-form h2{font-size:clamp(2.4rem,4.4vw,4rem);margin-bottom:12px}
+  .trial-form h2 span{color:var(--lime)}
+  .trial-form > p{color:var(--muted);margin-bottom:32px}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{display:flex;flex-direction:column;gap:8px}
+  .field.full{grid-column:span 2}
+  .field label{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .field input,.field select{background:var(--bg);border:1px solid var(--line);padding:14px;font:inherit;color:var(--white);outline:none;color-scheme:dark}
+  .field input:focus,.field select:focus{border-color:var(--lime)}
+  .trial-form .btn{width:100%;margin-top:26px}
+  .form-note{color:var(--muted);text-align:center;font-size:.85rem;margin-top:14px}
+
+  /* FAQ */
+  .faq{max-width:1100px;margin:0 auto;display:grid;gap:12px}
+  .faq details{background:var(--bg-2);border:1px solid var(--line);padding:22px 26px}
+  .faq summary{font-weight:700;font-size:1.08rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--lime);font-size:1.5rem;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--muted);margin-top:10px}
+
+  /* CONTACTOS */
+  .visit{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:50px;align-items:start}
+  .visit h3{font-size:1.8rem;margin-bottom:18px}
+  .visit .line{margin-bottom:14px}
+  .visit .line strong{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+  .visit .line span{color:#c9d0d2}
+  .hours{width:100%;border-collapse:collapse}
+  .hours td{padding:8px 0;border-bottom:1px solid var(--line);color:#c9d0d2}
+  .hours td:last-child{text-align:right;font-weight:700;color:var(--white)}
+  .hours tr.today td{color:var(--lime)}
+  .map{height:380px;filter:grayscale(1) invert(.9) contrast(.9)}
+  .map iframe{width:100%;height:100%;border:0}
+
+  footer{border-top:1px solid var(--line);padding:60px 0 30px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+  footer p{color:var(--muted);max-width:460px}
+  .social{display:flex;gap:26px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.84rem}
+  .social a:hover{color:var(--lime)}
+  .copy{color:#626b6e;font-size:.85rem;text-align:center}
+
+  .wa-float{position:fixed;right:22px;bottom:22px;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.7rem;box-shadow:0 10px 24px rgba(37,211,102,.4);z-index:60;transition:transform .2s}
+  .wa-float:hover{transform:scale(1.08)}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:1100px){
+    .mod-grid,.feat-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
+    .plans-grid,.t-grid{grid-template-columns:1fr;max-width:600px}
+    .t-grid{margin:0 auto}
+    .trial-grid{grid-template-columns:1fr}
+    .trial-grid .ph{min-height:340px}
+    .visit{grid-template-columns:1fr 1fr}
+    .visit .map{grid-column:span 2}
+    .badge-free{display:none}
+    .nav ul{gap:22px}
+  }
+  @media (max-width:900px){
+    .nav ul{display:none}
+    .nav ul.open{display:flex;flex-direction:column;position:absolute;top:84px;left:0;right:0;background:var(--bg);padding:24px 6%;gap:18px;border-bottom:1px solid var(--line)}
+    .menu-toggle{display:block}
+    .nav-right .btn{display:none}
+    section{padding:80px 0}
+    .hero-stats{gap:30px}
+  }
+  @media (max-width:600px){
+    .mod-grid,.feat-grid,.team-grid,.fields{grid-template-columns:1fr}
+    .field.full{grid-column:span 1}
+    .visit{grid-template-columns:1fr}
+    .visit .map{grid-column:span 1}
+    .hero-stats strong{font-size:2.3rem}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <a href="#inicio" class="logo"><span class="bolt">⚡</span>PULSO</a>
+    <ul id="menu">
+      <li><a href="#modalidades" data-i18n="k0">Modalidades</a></li>
+      <li><a href="#planos" data-i18n="k1">Planos</a></li>
+      <li><a href="#horario" data-i18n="k2">Horário</a></li>
+      <li><a href="#treinadores" data-i18n="k3">Treinadores</a></li>
+      <li><a href="#contactos" data-i18n="k4">Contactos</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang" id="lang">
+        <button type="button" class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+          <img class="flag" id="langFlag" src="https://flagcdn.com/w40/pt.png" alt="" width="22" height="16"><span id="langCode">PT</span><span class="caret">▾</span>
+        </button>
+        <ul class="lang-menu" id="langMenu">
+          <li><button type="button" data-lang="pt"><img class="flag" src="https://flagcdn.com/w40/pt.png" alt="" width="22" height="16">Português</button></li>
+          <li><button type="button" data-lang="en"><img class="flag" src="https://flagcdn.com/w40/gb.png" alt="" width="22" height="16">English</button></li>
+          <li><button type="button" data-lang="es"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="" width="22" height="16">Español</button></li>
+          <li><button type="button" data-lang="fr"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="" width="22" height="16">Français</button></li>
+          <li><button type="button" data-lang="it"><img class="flag" src="https://flagcdn.com/w40/it.png" alt="" width="22" height="16">Italiano</button></li>
+          <li><button type="button" data-lang="de"><img class="flag" src="https://flagcdn.com/w40/de.png" alt="" width="22" height="16">Deutsch</button></li>
+          <li><button type="button" data-lang="uk"><img class="flag" src="https://flagcdn.com/w40/ua.png" alt="" width="22" height="16">Українська</button></li>
+          <li><button type="button" data-lang="ru"><img class="flag" src="https://flagcdn.com/w40/ru.png" alt="" width="22" height="16">Русский</button></li>
+          <li><button type="button" data-lang="ja"><img class="flag" src="https://flagcdn.com/w40/jp.png" alt="" width="22" height="16">日本語</button></li>
+          <li><button type="button" data-lang="zh"><img class="flag" src="https://flagcdn.com/w40/cn.png" alt="" width="22" height="16">中文</button></li>
+        </ul>
+      </div>
+
+      <a href="#experimentar" class="btn btn-lime" data-i18n="k5">Experimentar grátis</a>
+      <button class="menu-toggle" aria-label="Abrir menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg ph"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2400&q=80" alt="Sala de treino do ginásio"></div>
+  <div class="container">
+    <span class="eyebrow" data-i18n="k6">Ginásio em Lisboa</span>
+    <h1 data-i18n="k7">Mais forte <span>todos os dias.</span></h1>
+    <p data-i18n="k8">Equipamento de topo, aulas de grupo com energia e treinadores que puxam pelo seu melhor. O seu objetivo começa aqui.</p>
+    <div class="hero-actions">
+      <a href="#experimentar" class="btn btn-lime" data-i18n="k9">Experimentar 7 dias grátis</a>
+      <a href="#planos" class="btn btn-line" data-i18n="k10">Ver planos</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>6h–23h</strong><span data-i18n="k11">Aberto todos os dias</span></div>
+      <div><strong>+40</strong><span data-i18n="k12">Aulas por semana</span></div>
+      <div><strong>1.500 m²</strong><span data-i18n="k13">De área de treino</span></div>
+    </div>
+  </div>
+  <div class="badge-free"><div><b>7</b><span data-i18n="k14">Dias grátis</span></div></div>
+</section>
+
+<!-- MODALIDADES -->
+<section id="modalidades">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="k0">Modalidades</span>
+      <h2 data-i18n="k15">Encontre o treino <span>que é a sua cara</span></h2>
+      <p data-i18n="k16">Seja qual for o seu objetivo, temos uma modalidade para o levar até lá.</p>
+    </div>
+    <div class="mod-grid">
+      <article class="mod reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=75" alt=""></div><div class="mod-body"><span class="tag" data-i18n="k17">Força</span><h3 data-i18n="k18">Musculação</h3><p data-i18n="k19">Mais de 120 máquinas e uma zona de pesos livres para todos os níveis.</p></div></article>
+      <article class="mod reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=75" alt=""></div><div class="mod-body"><span class="tag" data-i18n="k20">Intensidade</span><h3 data-i18n="k21">Treino Funcional</h3><p data-i18n="k22">Circuitos dinâmicos que trabalham o corpo todo, em pequenos grupos.</p></div></article>
+      <article class="mod reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=75" alt=""></div><div class="mod-body"><span class="tag" data-i18n="k23">Cardio</span><h3>Cycling</h3><p data-i18n="k24">Música alta, luzes e muita energia. 45 minutos que passam a voar.</p></div></article>
+      <article class="mod reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=75" alt=""></div><div class="mod-body"><span class="tag" data-i18n="k25">Equilíbrio</span><h3 data-i18n="k26">Yoga & Pilates</h3><p data-i18n="k27">Flexibilidade, postura e respiração para equilibrar corpo e mente.</p></div></article>
+      <article class="mod reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=900&q=75" alt=""></div><div class="mod-body"><span class="tag" data-i18n="k28">Combate</span><h3 data-i18n="k29">Boxe</h3><p data-i18n="k30">Técnica, cardio e descarga de stress. Ideal para iniciantes.</p></div></article>
+      <article class="mod reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=75" alt=""></div><div class="mod-body"><span class="tag" data-i18n="k31">Queima</span><h3>HIIT</h3><p data-i18n="k32">Treino intervalado de alta intensidade: 30 minutos, resultados máximos.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="k33">Porquê o PULSO</span>
+      <h2 data-i18n="k34">Tudo para <span>chegar mais longe</span></h2>
+    </div>
+    <div class="feat-grid reveal">
+      <div class="feat"><div class="ic">🏋️</div><h3 data-i18n="k35">Personal training</h3><p data-i18n="k36">Planos individuais com treinadores certificados para resultados mais rápidos.</p></div>
+      <div class="feat"><div class="ic">📱</div><h3 data-i18n="k37">App de treino</h3><p data-i18n="k38">O seu plano, as reservas de aulas e a sua evolução sempre no telemóvel.</p></div>
+      <div class="feat"><div class="ic">📊</div><h3 data-i18n="k39">Avaliação física</h3><p data-i18n="k40">Composição corporal e testes de condição física para medir o progresso.</p></div>
+      <div class="feat"><div class="ic">🧖</div><h3 data-i18n="k41">Balneários com sauna</h3><p data-i18n="k42">Balneários amplos, cacifos e sauna para recuperar depois do treino.</p></div>
+      <div class="feat"><div class="ic">🅿️</div><h3 data-i18n="k43">Estacionamento</h3><p data-i18n="k44">Parque gratuito para sócios durante o treino.</p></div>
+      <div class="feat"><div class="ic">🥗</div><h3 data-i18n="k45">Nutrição</h3><p data-i18n="k46">Consultas com nutricionista para potenciar os seus resultados.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="k1">Planos</span>
+      <h2 data-i18n="k47">Escolha o seu <span>plano</span></h2>
+      <p data-i18n="k48">Mensalidades simples, sem surpresas. Mude de plano quando quiser.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan reveal">
+        <h3>Base</h3><span class="desc" data-i18n="k49">Para quem treina por conta própria</span>
+        <div class="price">24,90 € <small data-i18n="k50">/mês</small></div>
+        <ul><li data-i18n="k51">Acesso livre à sala de musculação</li><li data-i18n="k52">Zona de cardio</li><li data-i18n="k53">Plano de treino inicial</li><li data-i18n="k37">App de treino</li></ul>
+        <a href="#experimentar" class="btn btn-line" data-i18n="k54">Escolher plano</a>
+      </div>
+      <div class="plan featured reveal">
+        <span class="pop" data-i18n="k55">Mais popular</span>
+        <h3>Total</h3><span class="desc" data-i18n="k56">Acesso completo ao ginásio e às aulas</span>
+        <div class="price">34,90 € <small data-i18n="k50">/mês</small></div>
+        <ul><li data-i18n="k57">Tudo do plano Base</li><li data-i18n="k58">Todas as aulas de grupo</li><li data-i18n="k59">Avaliação física trimestral</li><li data-i18n="k41">Balneários com sauna</li></ul>
+        <a href="#experimentar" class="btn" data-i18n="k54">Escolher plano</a>
+      </div>
+      <div class="plan reveal">
+        <h3>Premium</h3><span class="desc" data-i18n="k60">Acompanhamento personalizado</span>
+        <div class="price">54,90 € <small data-i18n="k50">/mês</small></div>
+        <ul><li data-i18n="k61">Tudo do plano Total</li><li data-i18n="k62">2 sessões de personal training por mês</li><li data-i18n="k63">Consulta de nutrição</li><li data-i18n="k64">Toalha e cacifo incluídos</li></ul>
+        <a href="#experimentar" class="btn btn-line" data-i18n="k54">Escolher plano</a>
+      </div>
+    </div>
+    <p class="plans-note"><b data-i18n="k65">Inscrição grátis este mês.</b> <span data-i18n="k66">Sem fidelização nos planos mensais.</span></p>
+  </div>
+</section>
+
+<!-- HORÁRIO -->
+<section class="schedule" id="horario">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="k2">Horário</span>
+      <h2 data-i18n="k67">Aulas de <span>grupo</span></h2>
+      <p data-i18n="k68">Reserve a sua aula na app até 24 horas antes. Todas as aulas estão incluídas no plano Total e Premium.</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table class="sched">
+        <thead><tr><th></th><th data-i18n="k69">Segunda</th><th data-i18n="k70">Terça</th><th data-i18n="k71">Quarta</th><th data-i18n="k72">Quinta</th><th data-i18n="k73">Sexta</th><th data-i18n="k74">Sábado</th></tr></thead>
+        <tbody>
+          <tr><td class="time">07:00</td><td><span>HIIT</span></td><td><span>Cycling</span></td><td><span>HIIT</span></td><td><span>Cycling</span></td><td><span>HIIT</span></td><td class="empty">—</td></tr>
+          <tr><td class="time">09:00</td><td><span>Pilates</span></td><td><span>Yoga</span></td><td><span>Pilates</span></td><td><span>Yoga</span></td><td><span>Pilates</span></td><td><span data-i18n="k21">Treino Funcional</span></td></tr>
+          <tr><td class="time">12:30</td><td><span data-i18n="k21">Treino Funcional</span></td><td><span>HIIT</span></td><td><span data-i18n="k21">Treino Funcional</span></td><td><span>HIIT</span></td><td><span data-i18n="k21">Treino Funcional</span></td><td><span>Cycling</span></td></tr>
+          <tr><td class="time">18:30</td><td><span>Cycling</span></td><td><span data-i18n="k29">Boxe</span></td><td><span>Cycling</span></td><td><span data-i18n="k29">Boxe</span></td><td><span>Cycling</span></td><td><span>Yoga</span></td></tr>
+          <tr><td class="time">19:30</td><td><span data-i18n="k29">Boxe</span></td><td><span data-i18n="k21">Treino Funcional</span></td><td><span data-i18n="k29">Boxe</span></td><td><span data-i18n="k21">Treino Funcional</span></td><td><span>Yoga</span></td><td class="empty">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TREINADORES -->
+<section id="treinadores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="k3">Treinadores</span>
+      <h2 data-i18n="k75">A equipa que <span>puxa por si</span></h2>
+      <p data-i18n="k76">Profissionais certificados, apaixonados pelo treino e focados nos seus objetivos.</p>
+    </div>
+    <div class="team-grid">
+      <div class="coach reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=75" alt="André Silva"></div><h3>André Silva</h3><span data-i18n="k77">Musculação · Personal trainer</span></div>
+      <div class="coach reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=75" alt="Rita Gomes"></div><h3>Rita Gomes</h3><span data-i18n="k78">HIIT · Treino funcional</span></div>
+      <div class="coach reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=75" alt="Bruno Costa"></div><h3>Bruno Costa</h3><span data-i18n="k79">Boxe · Cycling</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTEMUNHOS -->
+<section class="testi">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="k80">Resultados</span>
+      <h2 data-i18n="k81">Quem treina aqui, <span>sente a diferença</span></h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal"><div class="result">-12 kg<small data-i18n="k82">em 6 meses</small></div><p data-i18n="k86">“Nunca tinha conseguido manter uma rotina. Com o plano do meu PT e as aulas de HIIT, finalmente consegui.”</p><strong>Carla M.</strong><em data-i18n="k87">Sócia há 1 ano</em></div>
+      <div class="t-card reveal"><div class="result">+8 kg<small data-i18n="k83">de massa muscular</small></div><p data-i18n="k88">“Equipamento excelente e a equipa está sempre disponível para corrigir a técnica. O melhor ginásio onde já treinei.”</p><strong>Diogo R.</strong><em data-i18n="k89">Sócio há 2 anos</em></div>
+      <div class="t-card reveal"><div class="result"><span data-i18n="k84">0 dores</span><small data-i18n="k85">nas costas</small></div><p data-i18n="k90">“Comecei o Pilates por causa das dores nas costas e hoje sinto-me outra pessoa. Ambiente fantástico.”</p><strong>Luísa T.</strong><em data-i18n="k91">Sócia há 8 meses</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIMENTAR -->
+<section id="experimentar">
+  <div class="container">
+    <div class="trial-grid reveal">
+      <div class="ph"><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=75" alt=""></div>
+      <form class="trial-form" id="trialForm">
+        <span class="eyebrow" data-i18n="k92">Experimente grátis</span>
+        <h2 data-i18n="k93">7 dias <span>por nossa conta</span></h2>
+        <p data-i18n="k94">Sem compromisso e sem cartão. Deixe os seus dados e enviamos-lhe o passe por WhatsApp.</p>
+        <div class="fields">
+          <div class="field"><label for="f-name" data-i18n="k95">Nome</label><input id="f-name" required autocomplete="name"></div>
+          <div class="field"><label for="f-age" data-i18n="k96">Idade</label><input id="f-age" type="number" min="14" max="99"></div>
+          <div class="field"><label for="f-goal" data-i18n="k97">Objetivo</label>
+            <select id="f-goal">
+              <option value="Perder peso" data-i18n="k98">Perder peso</option>
+              <option value="Ganhar massa muscular" data-i18n="k99">Ganhar massa muscular</option>
+              <option value="Melhorar a condição física" data-i18n="k100">Melhorar a condição física</option>
+              <option value="Bem-estar e saúde" data-i18n="k101">Bem-estar e saúde</option>
+            </select></div>
+          <div class="field"><label for="f-time" data-i18n="k102">Quando prefere treinar?</label>
+            <select id="f-time">
+              <option value="Manhã" data-i18n="k103">Manhã</option>
+              <option value="Hora de almoço" data-i18n="k104">Hora de almoço</option>
+              <option value="Fim do dia" data-i18n="k105">Fim do dia</option>
+              <option value="Fim de semana" data-i18n="k106">Fim de semana</option>
+            </select></div>
+          <div class="field full"><label for="f-mod" data-i18n="k107">Modalidade que gostaria de experimentar</label>
+            <select id="f-mod">
+              <option value="Musculação" data-i18n="k18">Musculação</option>
+              <option value="Treino Funcional" data-i18n="k21">Treino Funcional</option>
+              <option value="Cycling">Cycling</option>
+              <option value="Yoga & Pilates" data-i18n="k26">Yoga & Pilates</option>
+              <option value="Boxe" data-i18n="k29">Boxe</option>
+              <option value="HIIT">HIIT</option>
+            </select></div>
+        </div>
+        <button type="submit" class="btn btn-wa" data-i18n="k108">💬 Pedir o meu passe grátis</button>
+        <p class="form-note" data-i18n="k109">Respondemos no próprio dia.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="k110">Perguntas frequentes</span>
+      <h2 data-i18n="k111">Dúvidas? <span>Respondemos</span></h2>
+    </div>
+    <div class="faq reveal">
+      <details open><summary data-i18n="k112">Nunca treinei num ginásio. Posso começar?</summary><p data-i18n="k113">Claro! No primeiro dia um treinador mostra-lhe o espaço, explica o funcionamento das máquinas e cria um plano adaptado a si.</p></details>
+      <details><summary data-i18n="k114">Há fidelização?</summary><p data-i18n="k115">Não nos planos mensais. Pode cancelar quando quiser, com aviso prévio de 30 dias.</p></details>
+      <details><summary data-i18n="k116">Preciso de reservar as aulas?</summary><p data-i18n="k117">Sim, as aulas de grupo têm lugares limitados. Pode reservar na app ou na receção até 24 horas antes.</p></details>
+      <details><summary data-i18n="k118">Existem descontos para estudantes ou famílias?</summary><p data-i18n="k119">Sim. Estudantes até aos 25 anos têm 15% de desconto e há condições especiais para casais e famílias.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTOS -->
+<section id="contactos" style="padding-top:0">
+  <div class="container visit">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="k4">Contactos</span>
+      <h3 data-i18n="k120">Onde estamos</h3>
+      <div class="line"><strong data-i18n="k121">Morada</strong><span>Rua do Desporto, 77<br>1700-000 Lisboa</span></div>
+      <div class="line"><strong data-i18n="k122">Telefone</strong><span>21 234 5678</span></div>
+      <div class="line"><strong data-i18n="k123">Email</strong><span>ola@pulso.pt</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="k2">Horário</span>
+      <h3 data-i18n="k124">Quando abrimos</h3>
+      <table class="hours" id="hours">
+        <tr data-d="1"><td data-i18n="k125">Segunda a Sexta</td><td>6h00 – 23h00</td></tr>
+        <tr data-d="6"><td data-i18n="k74">Sábado</td><td>8h00 – 20h00</td></tr>
+        <tr data-d="0"><td data-i18n="k126">Domingo</td><td>9h00 – 14h00</td></tr>
+      </table>
+    </div>
+    <div class="map reveal"><iframe src="https://www.google.com/maps?q=Lisboa&output=embed" loading="lazy" title="Mapa do ginásio"></iframe></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div><a href="#inicio" class="logo"><span class="bolt">⚡</span>PULSO</a><p style="margin-top:12px" data-i18n="k127">Ginásio com musculação, aulas de grupo e personal training. Treine com energia, todos os dias.</p></div>
+      <div class="social"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="copy">© <span id="y"></span> PULSO Ginásio · <span data-i18n="k128">Todos os direitos reservados</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/351912345678" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+  const header=document.getElementById('header');
+  const onScroll=()=>header.classList.toggle('scrolled',scrollY>60);
+  addEventListener('scroll',onScroll);onScroll();
+  document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')));
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.querySelectorAll('.ph img').forEach(img=>{
+    const hide=()=>img.style.visibility='hidden';
+    if(img.complete&&img.naturalWidth===0)hide();else img.addEventListener('error',hide);
+  });
+
+  // Aula experimental: abre o WhatsApp com a mensagem já escrita (sempre em português, para o ginásio)
+  document.getElementById('trialForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const v=id=>document.getElementById(id).value.trim();
+    let msg=`Olá! Gostaria de experimentar o ginásio durante 7 dias.\nNome: ${v('f-name')}`;
+    if(v('f-age'))msg+=`\nIdade: ${v('f-age')}`;
+    msg+=`\nObjetivo: ${v('f-goal')}\nHorário preferido: ${v('f-time')}\nModalidade: ${v('f-mod')}`;
+    window.open('https://wa.me/351912345678?text='+encodeURIComponent(msg),'_blank');
+  });
+
+  const day=new Date().getDay();
+  const row=document.querySelector(`#hours tr[data-d="${day>=1&&day<=5?1:day}"]`);
+  if(row)row.classList.add('today');
+  document.getElementById('y').textContent=new Date().getFullYear();
+
+  // ---------- IDIOMAS ----------
+  const I18N = {"en": {"k0": "Classes", "k1": "Memberships", "k2": "Timetable", "k3": "Trainers", "k4": "Contact", "k5": "Try it free", "k6": "Gym in Lisbon", "k7": "Stronger <span>every day.</span>", "k8": "Top-class equipment, high-energy group classes and trainers who push you to be your best. Your goal starts here.", "k9": "Try 7 days free", "k10": "See memberships", "k11": "Open every day", "k12": "Classes per week", "k13": "Of training space", "k14": "Days free", "k15": "Find the workout <span>that suits you</span>", "k16": "Whatever your goal, we have a class to get you there.", "k17": "Strength", "k18": "Weight Training", "k19": "Over 120 machines and a free-weights area for every level.", "k20": "Intensity", "k21": "Functional Training", "k22": "Dynamic circuits that work your whole body, in small groups.", "k23": "Cardio", "k24": "Loud music, lights and lots of energy. 45 minutes that fly by.", "k25": "Balance", "k26": "Yoga & Pilates", "k27": "Flexibility, posture and breathing to balance body and mind.", "k28": "Combat", "k29": "Boxing", "k30": "Technique, cardio and stress relief. Perfect for beginners.", "k31": "Burn", "k32": "High-intensity interval training: 30 minutes, maximum results.", "k33": "Why PULSO", "k34": "Everything to <span>go further</span>", "k35": "Personal training", "k36": "Individual plans with certified trainers for faster results.", "k37": "Training app", "k38": "Your plan, class bookings and progress, always on your phone.", "k39": "Fitness assessment", "k40": "Body composition and fitness tests to track your progress.", "k41": "Changing rooms with sauna", "k42": "Spacious changing rooms, lockers and a sauna to recover after training.", "k43": "Parking", "k44": "Free parking for members while they train.", "k45": "Nutrition", "k46": "Sessions with a nutritionist to boost your results.", "k47": "Choose your <span>membership</span>", "k48": "Simple monthly fees, no surprises. Switch plans whenever you like.", "k49": "For those who train on their own", "k50": "/month", "k51": "Free access to the weights room", "k52": "Cardio area", "k53": "Starter training plan", "k54": "Choose plan", "k55": "Most popular", "k56": "Full access to the gym and classes", "k57": "Everything in Base", "k58": "All group classes", "k59": "Quarterly fitness assessment", "k60": "Personalised coaching", "k61": "Everything in Total", "k62": "2 personal training sessions per month", "k63": "Nutrition consultation", "k64": "Towel and locker included", "k65": "Free sign-up this month.", "k66": "No lock-in on monthly plans.", "k67": "Group <span>classes</span>", "k68": "Book your class in the app up to 24 hours in advance. All classes are included in the Total and Premium plans.", "k69": "Monday", "k70": "Tuesday", "k71": "Wednesday", "k72": "Thursday", "k73": "Friday", "k74": "Saturday", "k75": "The team that <span>pushes you</span>", "k76": "Certified professionals, passionate about training and focused on your goals.", "k77": "Weight training · Personal trainer", "k78": "HIIT · Functional training", "k79": "Boxing · Cycling", "k80": "Results", "k81": "Train here and <span>feel the difference</span>", "k82": "in 6 months", "k83": "of muscle mass", "k84": "Zero pain", "k85": "in my back", "k86": "“I'd never managed to stick to a routine. With my PT's plan and the HIIT classes, I finally did it.”", "k87": "Member for 1 year", "k88": "“Excellent equipment and the team is always on hand to correct your technique. The best gym I've ever trained at.”", "k89": "Member for 2 years", "k90": "“I started Pilates because of back pain and today I feel like a new person. Fantastic atmosphere.”", "k91": "Member for 8 months", "k92": "Try it free", "k93": "7 days <span>on us</span>", "k94": "No commitment and no card required. Leave your details and we'll send your pass via WhatsApp.", "k95": "Name", "k96": "Age", "k97": "Goal", "k98": "Lose weight", "k99": "Build muscle", "k100": "Get fitter", "k101": "Health and well-being", "k102": "When do you prefer to train?", "k103": "Morning", "k104": "Lunchtime", "k105": "Evening", "k106": "Weekend", "k107": "Class you'd like to try", "k108": "💬 Get my free pass", "k109": "We reply the same day.", "k110": "Frequently asked questions", "k111": "Questions? <span>We've got answers</span>", "k112": "I've never trained at a gym. Can I start?", "k113": "Of course! On your first day a trainer will show you around, explain how the machines work and create a plan tailored to you.", "k114": "Is there a lock-in period?", "k115": "Not on monthly plans. You can cancel whenever you like with 30 days' notice.", "k116": "Do I need to book classes?", "k117": "Yes, group classes have limited places. You can book in the app or at reception up to 24 hours in advance.", "k118": "Are there discounts for students or families?", "k119": "Yes. Students up to age 25 get 15% off, and there are special rates for couples and families.", "k120": "Where to find us", "k121": "Address", "k122": "Phone", "k123": "Email", "k124": "Opening hours", "k125": "Monday to Friday", "k126": "Sunday", "k127": "Gym with weight training, group classes and personal training. Train with energy, every day.", "k128": "All rights reserved"}, "es": {"k0": "Actividades", "k1": "Tarifas", "k2": "Horario", "k3": "Entrenadores", "k4": "Contacto", "k5": "Prueba gratis", "k6": "Gimnasio en Lisboa", "k7": "Más fuerte <span>cada día.</span>", "k8": "Equipamiento de primera, clases colectivas llenas de energía y entrenadores que sacan lo mejor de ti. Tu objetivo empieza aquí.", "k9": "Prueba 7 días gratis", "k10": "Ver tarifas", "k11": "Abierto todos los días", "k12": "Clases por semana", "k13": "De área de entrenamiento", "k14": "Días gratis", "k15": "Encuentra el entrenamiento <span>hecho para ti</span>", "k16": "Sea cual sea tu objetivo, tenemos una actividad para llevarte hasta él.", "k17": "Fuerza", "k18": "Musculación", "k19": "Más de 120 máquinas y una zona de peso libre para todos los niveles.", "k20": "Intensidad", "k21": "Entrenamiento Funcional", "k22": "Circuitos dinámicos que trabajan todo el cuerpo, en grupos reducidos.", "k23": "Cardio", "k24": "Música alta, luces y mucha energía. 45 minutos que pasan volando.", "k25": "Equilibrio", "k26": "Yoga y Pilates", "k27": "Flexibilidad, postura y respiración para equilibrar cuerpo y mente.", "k28": "Combate", "k29": "Boxeo", "k30": "Técnica, cardio y liberación de estrés. Ideal para principiantes.", "k31": "Quema", "k32": "Entrenamiento interválico de alta intensidad: 30 minutos, resultados máximos.", "k33": "Por qué PULSO", "k34": "Todo para <span>llegar más lejos</span>", "k35": "Entrenamiento personal", "k36": "Planes individuales con entrenadores certificados para resultados más rápidos.", "k37": "App de entrenamiento", "k38": "Tu plan, tus reservas de clases y tu evolución siempre en el móvil.", "k39": "Valoración física", "k40": "Composición corporal y pruebas de condición física para medir tu progreso.", "k41": "Vestuarios con sauna", "k42": "Vestuarios amplios, taquillas y sauna para recuperarte después de entrenar.", "k43": "Aparcamiento", "k44": "Parking gratuito para socios mientras entrenan.", "k45": "Nutrición", "k46": "Consultas con nutricionista para potenciar tus resultados.", "k47": "Elige tu <span>tarifa</span>", "k48": "Cuotas mensuales sencillas, sin sorpresas. Cambia de tarifa cuando quieras.", "k49": "Para quien entrena por su cuenta", "k50": "/mes", "k51": "Acceso libre a la sala de musculación", "k52": "Zona de cardio", "k53": "Plan de entrenamiento inicial", "k54": "Elegir tarifa", "k55": "Más popular", "k56": "Acceso completo al gimnasio y a las clases", "k57": "Todo lo de la tarifa Base", "k58": "Todas las clases colectivas", "k59": "Valoración física trimestral", "k60": "Seguimiento personalizado", "k61": "Todo lo de la tarifa Total", "k62": "2 sesiones de entrenamiento personal al mes", "k63": "Consulta de nutrición", "k64": "Toalla y taquilla incluidas", "k65": "Inscripción gratis este mes.", "k66": "Sin permanencia en las tarifas mensuales.", "k67": "Clases <span>colectivas</span>", "k68": "Reserva tu clase en la app hasta 24 horas antes. Todas las clases están incluidas en las tarifas Total y Premium.", "k69": "Lunes", "k70": "Martes", "k71": "Miércoles", "k72": "Jueves", "k73": "Viernes", "k74": "Sábado", "k75": "El equipo que <span>te impulsa</span>", "k76": "Profesionales certificados, apasionados por el entrenamiento y centrados en tus objetivos.", "k77": "Musculación · Entrenador personal", "k78": "HIIT · Entrenamiento funcional", "k79": "Boxeo · Cycling", "k80": "Resultados", "k81": "Quien entrena aquí <span>nota la diferencia</span>", "k82": "en 6 meses", "k83": "de masa muscular", "k84": "Cero dolor", "k85": "de espalda", "k86": "“Nunca había conseguido mantener una rutina. Con el plan de mi entrenador y las clases de HIIT, por fin lo logré.”", "k87": "Socia desde hace 1 año", "k88": "“Equipamiento excelente y el equipo siempre está disponible para corregir la técnica. El mejor gimnasio en el que he entrenado.”", "k89": "Socio desde hace 2 años", "k90": "“Empecé Pilates por el dolor de espalda y hoy me siento otra persona. Ambiente fantástico.”", "k91": "Socia desde hace 8 meses", "k92": "Prueba gratis", "k93": "7 días <span>invitamos nosotros</span>", "k94": "Sin compromiso y sin tarjeta. Déjanos tus datos y te enviamos el pase por WhatsApp.", "k95": "Nombre", "k96": "Edad", "k97": "Objetivo", "k98": "Perder peso", "k99": "Ganar masa muscular", "k100": "Mejorar la forma física", "k101": "Bienestar y salud", "k102": "¿Cuándo prefieres entrenar?", "k103": "Mañana", "k104": "Hora de comer", "k105": "Última hora", "k106": "Fin de semana", "k107": "Actividad que te gustaría probar", "k108": "💬 Pedir mi pase gratis", "k109": "Respondemos el mismo día.", "k110": "Preguntas frecuentes", "k111": "¿Dudas? <span>Te respondemos</span>", "k112": "Nunca he entrenado en un gimnasio. ¿Puedo empezar?", "k113": "¡Claro! El primer día un entrenador te enseña las instalaciones, te explica cómo funcionan las máquinas y crea un plan adaptado a ti.", "k114": "¿Hay permanencia?", "k115": "No en las tarifas mensuales. Puedes darte de baja cuando quieras con 30 días de preaviso.", "k116": "¿Tengo que reservar las clases?", "k117": "Sí, las clases colectivas tienen plazas limitadas. Puedes reservar en la app o en recepción hasta 24 horas antes.", "k118": "¿Hay descuentos para estudiantes o familias?", "k119": "Sí. Los estudiantes de hasta 25 años tienen un 15% de descuento y hay condiciones especiales para parejas y familias.", "k120": "Dónde estamos", "k121": "Dirección", "k122": "Teléfono", "k123": "Email", "k124": "Cuándo abrimos", "k125": "Lunes a viernes", "k126": "Domingo", "k127": "Gimnasio con musculación, clases colectivas y entrenamiento personal. Entrena con energía, todos los días.", "k128": "Todos los derechos reservados"}, "fr": {"k0": "Activités", "k1": "Abonnements", "k2": "Planning", "k3": "Coachs", "k4": "Contact", "k5": "Essai gratuit", "k6": "Salle de sport à Lisbonne", "k7": "Plus fort <span>chaque jour.</span>", "k8": "Des équipements haut de gamme, des cours collectifs pleins d'énergie et des coachs qui vous poussent à donner le meilleur. Votre objectif commence ici.", "k9": "Essayer 7 jours gratuits", "k10": "Voir les abonnements", "k11": "Ouvert tous les jours", "k12": "Cours par semaine", "k13": "D'espace d'entraînement", "k14": "Jours gratuits", "k15": "Trouvez l'entraînement <span>qui vous ressemble</span>", "k16": "Quel que soit votre objectif, nous avons une activité pour vous y mener.", "k17": "Force", "k18": "Musculation", "k19": "Plus de 120 machines et une zone de poids libres pour tous les niveaux.", "k20": "Intensité", "k21": "Training Fonctionnel", "k22": "Des circuits dynamiques qui font travailler tout le corps, en petits groupes.", "k23": "Cardio", "k24": "Musique à fond, lumières et beaucoup d'énergie. 45 minutes qui passent en un éclair.", "k25": "Équilibre", "k26": "Yoga & Pilates", "k27": "Souplesse, posture et respiration pour équilibrer le corps et l'esprit.", "k28": "Combat", "k29": "Boxe", "k30": "Technique, cardio et anti-stress. Idéal pour débuter.", "k31": "Brûle-graisse", "k32": "Entraînement fractionné à haute intensité : 30 minutes, résultats maximum.", "k33": "Pourquoi PULSO", "k34": "Tout pour <span>aller plus loin</span>", "k35": "Coaching personnel", "k36": "Des programmes individuels avec des coachs certifiés pour des résultats plus rapides.", "k37": "Appli d'entraînement", "k38": "Votre programme, vos réservations et votre progression, toujours sur votre téléphone.", "k39": "Bilan physique", "k40": "Composition corporelle et tests de condition physique pour mesurer vos progrès.", "k41": "Vestiaires avec sauna", "k42": "Vestiaires spacieux, casiers et sauna pour récupérer après l'effort.", "k43": "Parking", "k44": "Parking gratuit pour les membres pendant l'entraînement.", "k45": "Nutrition", "k46": "Consultations avec une nutritionniste pour booster vos résultats.", "k47": "Choisissez votre <span>abonnement</span>", "k48": "Des mensualités simples, sans surprise. Changez de formule quand vous voulez.", "k49": "Pour ceux qui s'entraînent en autonomie", "k50": "/mois", "k51": "Accès libre à la salle de musculation", "k52": "Espace cardio", "k53": "Programme d'entraînement de départ", "k54": "Choisir", "k55": "Le plus populaire", "k56": "Accès complet à la salle et aux cours", "k57": "Tout l'abonnement Base", "k58": "Tous les cours collectifs", "k59": "Bilan physique trimestriel", "k60": "Suivi personnalisé", "k61": "Tout l'abonnement Total", "k62": "2 séances de coaching personnel par mois", "k63": "Consultation de nutrition", "k64": "Serviette et casier inclus", "k65": "Inscription offerte ce mois-ci.", "k66": "Sans engagement sur les formules mensuelles.", "k67": "Cours <span>collectifs</span>", "k68": "Réservez votre cours dans l'appli jusqu'à 24 h à l'avance. Tous les cours sont inclus dans les formules Total et Premium.", "k69": "Lundi", "k70": "Mardi", "k71": "Mercredi", "k72": "Jeudi", "k73": "Vendredi", "k74": "Samedi", "k75": "L'équipe qui <span>vous motive</span>", "k76": "Des professionnels certifiés, passionnés par l'entraînement et concentrés sur vos objectifs.", "k77": "Musculation · Coach personnel", "k78": "HIIT · Training fonctionnel", "k79": "Boxe · Cycling", "k80": "Résultats", "k81": "Ceux qui s'entraînent ici <span>sentent la différence</span>", "k82": "en 6 mois", "k83": "de masse musculaire", "k84": "Zéro douleur", "k85": "au dos", "k86": "« Je n'avais jamais réussi à garder une routine. Avec le programme de mon coach et les cours de HIIT, j'y suis enfin arrivée. »", "k87": "Membre depuis 1 an", "k88": "« Un équipement excellent et une équipe toujours disponible pour corriger la technique. La meilleure salle où je me suis entraîné. »", "k89": "Membre depuis 2 ans", "k90": "« J'ai commencé le Pilates à cause de mes douleurs au dos et aujourd'hui je me sens une autre personne. Ambiance fantastique. »", "k91": "Membre depuis 8 mois", "k92": "Essai gratuit", "k93": "7 jours <span>offerts</span>", "k94": "Sans engagement et sans carte bancaire. Laissez vos coordonnées et nous vous envoyons votre pass par WhatsApp.", "k95": "Nom", "k96": "Âge", "k97": "Objectif", "k98": "Perdre du poids", "k99": "Prendre du muscle", "k100": "Améliorer ma condition physique", "k101": "Bien-être et santé", "k102": "Quand préférez-vous vous entraîner ?", "k103": "Matin", "k104": "Pause déjeuner", "k105": "Fin de journée", "k106": "Week-end", "k107": "Activité que vous aimeriez essayer", "k108": "💬 Recevoir mon pass gratuit", "k109": "Nous répondons le jour même.", "k110": "Questions fréquentes", "k111": "Des questions ? <span>On vous répond</span>", "k112": "Je ne suis jamais allé dans une salle. Je peux commencer ?", "k113": "Bien sûr ! Le premier jour, un coach vous fait visiter, vous explique les machines et crée un programme adapté à vous.", "k114": "Y a-t-il un engagement ?", "k115": "Pas sur les formules mensuelles. Vous pouvez résilier quand vous voulez avec un préavis de 30 jours.", "k116": "Faut-il réserver les cours ?", "k117": "Oui, les cours collectifs ont des places limitées. Réservez dans l'appli ou à l'accueil jusqu'à 24 h à l'avance.", "k118": "Y a-t-il des réductions pour les étudiants ou les familles ?", "k119": "Oui. Les étudiants jusqu'à 25 ans ont 15 % de réduction et il existe des conditions spéciales pour les couples et les familles.", "k120": "Où nous trouver", "k121": "Adresse", "k122": "Téléphone", "k123": "E-mail", "k124": "Nos horaires", "k125": "Du lundi au vendredi", "k126": "Dimanche", "k127": "Salle de sport avec musculation, cours collectifs et coaching personnel. Entraînez-vous avec énergie, tous les jours.", "k128": "Tous droits réservés"}, "it": {"k0": "Attività", "k1": "Abbonamenti", "k2": "Orari", "k3": "Trainer", "k4": "Contatti", "k5": "Prova gratis", "k6": "Palestra a Lisbona", "k7": "Più forte <span>ogni giorno.</span>", "k8": "Attrezzature al top, corsi di gruppo pieni di energia e trainer che tirano fuori il meglio di te. Il tuo obiettivo inizia qui.", "k9": "Prova 7 giorni gratis", "k10": "Vedi gli abbonamenti", "k11": "Aperto tutti i giorni", "k12": "Corsi a settimana", "k13": "Di area di allenamento", "k14": "Giorni gratis", "k15": "Trova l'allenamento <span>fatto per te</span>", "k16": "Qualunque sia il tuo obiettivo, abbiamo un'attività per raggiungerlo.", "k17": "Forza", "k18": "Sala pesi", "k19": "Oltre 120 macchine e un'area pesi liberi per tutti i livelli.", "k20": "Intensità", "k21": "Allenamento Funzionale", "k22": "Circuiti dinamici che allenano tutto il corpo, in piccoli gruppi.", "k23": "Cardio", "k24": "Musica alta, luci e tanta energia. 45 minuti che volano.", "k25": "Equilibrio", "k26": "Yoga & Pilates", "k27": "Flessibilità, postura e respirazione per equilibrare corpo e mente.", "k28": "Combattimento", "k29": "Boxe", "k30": "Tecnica, cardio e sfogo dello stress. Ideale per principianti.", "k31": "Brucia", "k32": "Allenamento a intervalli ad alta intensità: 30 minuti, risultati massimi.", "k33": "Perché PULSO", "k34": "Tutto per <span>andare oltre</span>", "k35": "Personal training", "k36": "Programmi individuali con trainer certificati per risultati più rapidi.", "k37": "App di allenamento", "k38": "Il tuo programma, le prenotazioni e i tuoi progressi sempre sullo smartphone.", "k39": "Valutazione fisica", "k40": "Composizione corporea e test di forma fisica per misurare i progressi.", "k41": "Spogliatoi con sauna", "k42": "Spogliatoi ampi, armadietti e sauna per recuperare dopo l'allenamento.", "k43": "Parcheggio", "k44": "Parcheggio gratuito per i soci durante l'allenamento.", "k45": "Nutrizione", "k46": "Consulenze con una nutrizionista per potenziare i tuoi risultati.", "k47": "Scegli il tuo <span>abbonamento</span>", "k48": "Quote mensili semplici, senza sorprese. Cambia abbonamento quando vuoi.", "k49": "Per chi si allena in autonomia", "k50": "/mese", "k51": "Accesso libero alla sala pesi", "k52": "Area cardio", "k53": "Programma di allenamento iniziale", "k54": "Scegli", "k55": "Il più popolare", "k56": "Accesso completo alla palestra e ai corsi", "k57": "Tutto del piano Base", "k58": "Tutti i corsi di gruppo", "k59": "Valutazione fisica trimestrale", "k60": "Supporto personalizzato", "k61": "Tutto del piano Total", "k62": "2 sessioni di personal training al mese", "k63": "Consulenza nutrizionale", "k64": "Asciugamano e armadietto inclusi", "k65": "Iscrizione gratuita questo mese.", "k66": "Nessun vincolo sugli abbonamenti mensili.", "k67": "Corsi di <span>gruppo</span>", "k68": "Prenota il tuo corso nell'app fino a 24 ore prima. Tutti i corsi sono inclusi nei piani Total e Premium.", "k69": "Lunedì", "k70": "Martedì", "k71": "Mercoledì", "k72": "Giovedì", "k73": "Venerdì", "k74": "Sabato", "k75": "Il team che <span>ti spinge</span>", "k76": "Professionisti certificati, appassionati di allenamento e concentrati sui tuoi obiettivi.", "k77": "Sala pesi · Personal trainer", "k78": "HIIT · Allenamento funzionale", "k79": "Boxe · Cycling", "k80": "Risultati", "k81": "Chi si allena qui <span>sente la differenza</span>", "k82": "in 6 mesi", "k83": "di massa muscolare", "k84": "Zero dolori", "k85": "alla schiena", "k86": "“Non ero mai riuscita a mantenere una routine. Con il programma del mio PT e le lezioni di HIIT, finalmente ce l'ho fatta.”", "k87": "Socia da 1 anno", "k88": "“Attrezzature eccellenti e il team è sempre disponibile a correggere la tecnica. La migliore palestra in cui mi sia mai allenato.”", "k89": "Socio da 2 anni", "k90": "“Ho iniziato Pilates per il mal di schiena e oggi mi sento un'altra persona. Ambiente fantastico.”", "k91": "Socia da 8 mesi", "k92": "Prova gratis", "k93": "7 giorni <span>offerti da noi</span>", "k94": "Senza impegno e senza carta. Lasciaci i tuoi dati e ti inviamo il pass su WhatsApp.", "k95": "Nome", "k96": "Età", "k97": "Obiettivo", "k98": "Perdere peso", "k99": "Aumentare la massa muscolare", "k100": "Migliorare la forma fisica", "k101": "Benessere e salute", "k102": "Quando preferisci allenarti?", "k103": "Mattina", "k104": "Pausa pranzo", "k105": "Sera", "k106": "Fine settimana", "k107": "Attività che vorresti provare", "k108": "💬 Richiedi il mio pass gratuito", "k109": "Rispondiamo in giornata.", "k110": "Domande frequenti", "k111": "Dubbi? <span>Ti rispondiamo</span>", "k112": "Non mi sono mai allenato in palestra. Posso iniziare?", "k113": "Certo! Il primo giorno un trainer ti mostra la struttura, ti spiega come funzionano le macchine e crea un programma su misura per te.", "k114": "C'è un vincolo?", "k115": "Non negli abbonamenti mensili. Puoi disdire quando vuoi con 30 giorni di preavviso.", "k116": "Devo prenotare i corsi?", "k117": "Sì, i corsi di gruppo hanno posti limitati. Puoi prenotare nell'app o alla reception fino a 24 ore prima.", "k118": "Ci sono sconti per studenti o famiglie?", "k119": "Sì. Gli studenti fino a 25 anni hanno il 15% di sconto e ci sono condizioni speciali per coppie e famiglie.", "k120": "Dove siamo", "k121": "Indirizzo", "k122": "Telefono", "k123": "Email", "k124": "Quando siamo aperti", "k125": "Dal lunedì al venerdì", "k126": "Domenica", "k127": "Palestra con sala pesi, corsi di gruppo e personal training. Allenati con energia, ogni giorno.", "k128": "Tutti i diritti riservati"}, "de": {"k0": "Kurse", "k1": "Mitgliedschaften", "k2": "Kursplan", "k3": "Trainer", "k4": "Kontakt", "k5": "Gratis testen", "k6": "Fitnessstudio in Lissabon", "k7": "Jeden Tag <span>stärker.</span>", "k8": "Top-Geräte, energiegeladene Gruppenkurse und Trainer, die das Beste aus Ihnen herausholen. Ihr Ziel beginnt hier.", "k9": "7 Tage gratis testen", "k10": "Mitgliedschaften ansehen", "k11": "Täglich geöffnet", "k12": "Kurse pro Woche", "k13": "Trainingsfläche", "k14": "Tage gratis", "k15": "Finden Sie das Training, <span>das zu Ihnen passt</span>", "k16": "Was auch immer Ihr Ziel ist, wir haben den passenden Kurs dafür.", "k17": "Kraft", "k18": "Krafttraining", "k19": "Über 120 Geräte und ein Freihantelbereich für jedes Level.", "k20": "Intensität", "k21": "Funktionelles Training", "k22": "Dynamische Zirkel, die den ganzen Körper trainieren, in kleinen Gruppen.", "k23": "Cardio", "k24": "Laute Musik, Lichter und viel Energie. 45 Minuten, die wie im Flug vergehen.", "k25": "Balance", "k26": "Yoga & Pilates", "k27": "Beweglichkeit, Haltung und Atmung für die Balance von Körper und Geist.", "k28": "Kampfsport", "k29": "Boxen", "k30": "Technik, Cardio und Stressabbau. Ideal für Einsteiger.", "k31": "Fatburn", "k32": "Hochintensives Intervalltraining: 30 Minuten, maximale Ergebnisse.", "k33": "Warum PULSO", "k34": "Alles, um <span>weiterzukommen</span>", "k35": "Personal Training", "k36": "Individuelle Pläne mit zertifizierten Trainern für schnellere Ergebnisse.", "k37": "Trainings-App", "k38": "Ihr Plan, Ihre Kursbuchungen und Ihr Fortschritt immer auf dem Handy.", "k39": "Fitness-Check", "k40": "Körperzusammensetzung und Fitnesstests, um Ihren Fortschritt zu messen.", "k41": "Umkleiden mit Sauna", "k42": "Großzügige Umkleiden, Spinde und Sauna zur Erholung nach dem Training.", "k43": "Parkplatz", "k44": "Kostenlose Parkplätze für Mitglieder während des Trainings.", "k45": "Ernährung", "k46": "Beratung durch eine Ernährungsberaterin für bessere Ergebnisse.", "k47": "Wählen Sie Ihre <span>Mitgliedschaft</span>", "k48": "Einfache Monatsbeiträge ohne Überraschungen. Wechseln Sie jederzeit den Tarif.", "k49": "Für alle, die selbstständig trainieren", "k50": "/Monat", "k51": "Freier Zugang zum Kraftbereich", "k52": "Cardiobereich", "k53": "Einstiegs-Trainingsplan", "k54": "Tarif wählen", "k55": "Am beliebtesten", "k56": "Voller Zugang zum Studio und zu allen Kursen", "k57": "Alles aus Base", "k58": "Alle Gruppenkurse", "k59": "Vierteljährlicher Fitness-Check", "k60": "Persönliche Betreuung", "k61": "Alles aus Total", "k62": "2 Personal-Training-Einheiten pro Monat", "k63": "Ernährungsberatung", "k64": "Handtuch und Spind inklusive", "k65": "Keine Anmeldegebühr diesen Monat.", "k66": "Keine Mindestlaufzeit bei Monatstarifen.", "k67": "Gruppen<span>kurse</span>", "k68": "Buchen Sie Ihren Kurs bis zu 24 Stunden vorher in der App. Alle Kurse sind in den Tarifen Total und Premium enthalten.", "k69": "Montag", "k70": "Dienstag", "k71": "Mittwoch", "k72": "Donnerstag", "k73": "Freitag", "k74": "Samstag", "k75": "Das Team, das <span>Sie antreibt</span>", "k76": "Zertifizierte Profis mit Leidenschaft fürs Training und Fokus auf Ihre Ziele.", "k77": "Krafttraining · Personal Trainer", "k78": "HIIT · Funktionelles Training", "k79": "Boxen · Cycling", "k80": "Ergebnisse", "k81": "Wer hier trainiert, <span>spürt den Unterschied</span>", "k82": "in 6 Monaten", "k83": "Muskelmasse", "k84": "Null Schmerzen", "k85": "im Rücken", "k86": "„Ich habe es nie geschafft, eine Routine durchzuhalten. Mit dem Plan meines PT und den HIIT-Kursen hat es endlich geklappt.“", "k87": "Mitglied seit 1 Jahr", "k88": "„Hervorragende Geräte und das Team ist immer da, um die Technik zu korrigieren. Das beste Studio, in dem ich je trainiert habe.“", "k89": "Mitglied seit 2 Jahren", "k90": "„Ich habe wegen Rückenschmerzen mit Pilates angefangen und fühle mich heute wie ein neuer Mensch. Fantastische Atmosphäre.“", "k91": "Mitglied seit 8 Monaten", "k92": "Gratis testen", "k93": "7 Tage <span>auf unsere Kosten</span>", "k94": "Unverbindlich und ohne Karte. Hinterlassen Sie Ihre Daten und wir schicken Ihnen den Pass per WhatsApp.", "k95": "Name", "k96": "Alter", "k97": "Ziel", "k98": "Abnehmen", "k99": "Muskeln aufbauen", "k100": "Fitter werden", "k101": "Wohlbefinden und Gesundheit", "k102": "Wann trainieren Sie am liebsten?", "k103": "Morgens", "k104": "Mittagspause", "k105": "Abends", "k106": "Wochenende", "k107": "Kurs, den Sie gerne testen möchten", "k108": "💬 Meinen Gratis-Pass anfordern", "k109": "Wir antworten noch am selben Tag.", "k110": "Häufige Fragen", "k111": "Fragen? <span>Wir antworten</span>", "k112": "Ich war noch nie in einem Fitnessstudio. Kann ich anfangen?", "k113": "Natürlich! Am ersten Tag zeigt Ihnen ein Trainer alles, erklärt die Geräte und erstellt einen Plan, der zu Ihnen passt.", "k114": "Gibt es eine Mindestlaufzeit?", "k115": "Nicht bei Monatstarifen. Sie können jederzeit mit 30 Tagen Frist kündigen.", "k116": "Muss ich Kurse buchen?", "k117": "Ja, die Gruppenkurse haben begrenzte Plätze. Buchen Sie in der App oder am Empfang bis zu 24 Stunden vorher.", "k118": "Gibt es Rabatte für Studierende oder Familien?", "k119": "Ja. Studierende bis 25 Jahre erhalten 15 % Rabatt, und für Paare und Familien gibt es Sonderkonditionen.", "k120": "So finden Sie uns", "k121": "Adresse", "k122": "Telefon", "k123": "E-Mail", "k124": "Öffnungszeiten", "k125": "Montag bis Freitag", "k126": "Sonntag", "k127": "Fitnessstudio mit Krafttraining, Gruppenkursen und Personal Training. Trainieren Sie mit Energie, jeden Tag.", "k128": "Alle Rechte vorbehalten"}, "uk": {"k0": "Напрями", "k1": "Абонементи", "k2": "Розклад", "k3": "Тренери", "k4": "Контакти", "k5": "Спробувати безкоштовно", "k6": "Спортзал у Лісабоні", "k7": "Сильніші <span>щодня.</span>", "k8": "Топове обладнання, енергійні групові заняття та тренери, які допомагають розкрити ваш максимум. Ваша мета починається тут.", "k9": "7 днів безкоштовно", "k10": "Переглянути абонементи", "k11": "Працюємо щодня", "k12": "Занять на тиждень", "k13": "Тренувальної площі", "k14": "Днів безкоштовно", "k15": "Знайдіть тренування, <span>яке підходить саме вам</span>", "k16": "Хоч якою була б ваша мета, у нас є напрям, щоб її досягти.", "k17": "Сила", "k18": "Силові тренування", "k19": "Понад 120 тренажерів і зона вільних ваг для будь-якого рівня.", "k20": "Інтенсивність", "k21": "Функціональний тренінг", "k22": "Динамічні кругові тренування для всього тіла в малих групах.", "k23": "Кардіо", "k24": "Гучна музика, світло та багато енергії. 45 хвилин, що минають непомітно.", "k25": "Баланс", "k26": "Йога та пілатес", "k27": "Гнучкість, постава та дихання для гармонії тіла й розуму.", "k28": "Єдиноборства", "k29": "Бокс", "k30": "Техніка, кардіо та зняття стресу. Ідеально для початківців.", "k31": "Спалювання", "k32": "Високоінтенсивне інтервальне тренування: 30 хвилин, максимальний результат.", "k33": "Чому PULSO", "k34": "Усе, щоб <span>досягти більшого</span>", "k35": "Персональні тренування", "k36": "Індивідуальні програми з сертифікованими тренерами для швидшого результату.", "k37": "Застосунок для тренувань", "k38": "Ваша програма, бронювання занять і прогрес завжди в телефоні.", "k39": "Фітнес-оцінка", "k40": "Склад тіла та тести фізичної форми, щоб відстежувати прогрес.", "k41": "Роздягальні із сауною", "k42": "Просторі роздягальні, шафки та сауна для відновлення після тренування.", "k43": "Паркінг", "k44": "Безкоштовна парковка для членів клубу під час тренування.", "k45": "Харчування", "k46": "Консультації з нутриціологом, щоб посилити ваш результат.", "k47": "Оберіть свій <span>абонемент</span>", "k48": "Прості щомісячні платежі без сюрпризів. Змінюйте абонемент будь-коли.", "k49": "Для тих, хто тренується самостійно", "k50": "/міс.", "k51": "Вільний доступ до тренажерної зали", "k52": "Кардіозона", "k53": "Стартова програма тренувань", "k54": "Обрати", "k55": "Найпопулярніший", "k56": "Повний доступ до залу та всіх занять", "k57": "Усе з абонемента Base", "k58": "Усі групові заняття", "k59": "Фітнес-оцінка щокварталу", "k60": "Персональний супровід", "k61": "Усе з абонемента Total", "k62": "2 персональні тренування на місяць", "k63": "Консультація з харчування", "k64": "Рушник і шафка включені", "k65": "Безкоштовна реєстрація цього місяця.", "k66": "Без зобов'язань на щомісячних абонементах.", "k67": "Групові <span>заняття</span>", "k68": "Бронюйте заняття в застосунку щонайменше за 24 години. Усі заняття включені в абонементи Total і Premium.", "k69": "Понеділок", "k70": "Вівторок", "k71": "Середа", "k72": "Четвер", "k73": "П'ятниця", "k74": "Субота", "k75": "Команда, яка <span>вас мотивує</span>", "k76": "Сертифіковані професіонали, що люблять тренування та зосереджені на ваших цілях.", "k77": "Силові · Персональний тренер", "k78": "HIIT · Функціональний тренінг", "k79": "Бокс · Cycling", "k80": "Результати", "k81": "Хто тренується тут, <span>відчуває різницю</span>", "k82": "за 6 місяців", "k83": "м'язової маси", "k84": "Нуль болю", "k85": "у спині", "k86": "«Мені ніколи не вдавалося дотримуватися режиму. З програмою мого тренера та заняттями HIIT нарешті вийшло.»", "k87": "У клубі 1 рік", "k88": "«Чудове обладнання, а команда завжди готова виправити техніку. Найкращий зал, де я тренувався.»", "k89": "У клубі 2 роки", "k90": "«Я почала пілатес через біль у спині, а тепер почуваюся іншою людиною. Фантастична атмосфера.»", "k91": "У клубі 8 місяців", "k92": "Спробуйте безкоштовно", "k93": "7 днів <span>за наш рахунок</span>", "k94": "Без зобов'язань і без картки. Залиште свої дані, і ми надішлемо вам перепустку у WhatsApp.", "k95": "Ім'я", "k96": "Вік", "k97": "Мета", "k98": "Схуднути", "k99": "Набрати м'язову масу", "k100": "Покращити фізичну форму", "k101": "Здоров'я та самопочуття", "k102": "Коли вам зручніше тренуватися?", "k103": "Ранок", "k104": "Обідня перерва", "k105": "Вечір", "k106": "Вихідні", "k107": "Напрям, який хочете спробувати", "k108": "💬 Отримати безкоштовну перепустку", "k109": "Відповідаємо того ж дня.", "k110": "Поширені запитання", "k111": "Є запитання? <span>Ми відповімо</span>", "k112": "Я ніколи не тренувався в залі. Можна почати?", "k113": "Звичайно! Першого дня тренер покаже вам зал, пояснить, як працюють тренажери, і складе програму саме для вас.", "k114": "Чи є мінімальний термін?", "k115": "Не на щомісячних абонементах. Ви можете скасувати будь-коли, попередивши за 30 днів.", "k116": "Чи потрібно бронювати заняття?", "k117": "Так, кількість місць на групових заняттях обмежена. Бронюйте в застосунку або на рецепції щонайменше за 24 години.", "k118": "Чи є знижки для студентів або сімей?", "k119": "Так. Студенти до 25 років мають знижку 15%, а для пар і сімей діють спеціальні умови.", "k120": "Де ми", "k121": "Адреса", "k122": "Телефон", "k123": "Email", "k124": "Коли ми відчинені", "k125": "Понеділок – п'ятниця", "k126": "Неділя", "k127": "Спортзал із силовими тренуваннями, груповими заняттями та персональними тренуваннями. Тренуйтеся з енергією щодня.", "k128": "Усі права захищено"}, "ru": {"k0": "Направления", "k1": "Абонементы", "k2": "Расписание", "k3": "Тренеры", "k4": "Контакты", "k5": "Попробовать бесплатно", "k6": "Фитнес-клуб в Лиссабоне", "k7": "Сильнее <span>с каждым днём.</span>", "k8": "Топовое оборудование, энергичные групповые занятия и тренеры, которые помогают раскрыть ваш максимум. Ваша цель начинается здесь.", "k9": "7 дней бесплатно", "k10": "Смотреть абонементы", "k11": "Открыто каждый день", "k12": "Занятий в неделю", "k13": "Тренировочной площади", "k14": "Дней бесплатно", "k15": "Найдите тренировку, <span>которая подходит именно вам</span>", "k16": "Какой бы ни была ваша цель, у нас есть направление, чтобы её достичь.", "k17": "Сила", "k18": "Силовые тренировки", "k19": "Более 120 тренажёров и зона свободных весов для любого уровня.", "k20": "Интенсивность", "k21": "Функциональный тренинг", "k22": "Динамичные круговые тренировки для всего тела в малых группах.", "k23": "Кардио", "k24": "Громкая музыка, свет и много энергии. 45 минут пролетают незаметно.", "k25": "Баланс", "k26": "Йога и пилатес", "k27": "Гибкость, осанка и дыхание для гармонии тела и разума.", "k28": "Единоборства", "k29": "Бокс", "k30": "Техника, кардио и снятие стресса. Идеально для новичков.", "k31": "Жиросжигание", "k32": "Высокоинтенсивная интервальная тренировка: 30 минут, максимальный результат.", "k33": "Почему PULSO", "k34": "Всё, чтобы <span>достичь большего</span>", "k35": "Персональные тренировки", "k36": "Индивидуальные программы с сертифицированными тренерами для более быстрого результата.", "k37": "Приложение для тренировок", "k38": "Ваша программа, бронирование занятий и прогресс всегда в телефоне.", "k39": "Фитнес-оценка", "k40": "Состав тела и тесты физической формы, чтобы отслеживать прогресс.", "k41": "Раздевалки с сауной", "k42": "Просторные раздевалки, шкафчики и сауна для восстановления после тренировки.", "k43": "Парковка", "k44": "Бесплатная парковка для членов клуба во время тренировки.", "k45": "Питание", "k46": "Консультации нутрициолога, чтобы усилить ваш результат.", "k47": "Выберите свой <span>абонемент</span>", "k48": "Простые ежемесячные платежи без сюрпризов. Меняйте абонемент когда угодно.", "k49": "Для тех, кто тренируется самостоятельно", "k50": "/мес.", "k51": "Свободный доступ в тренажёрный зал", "k52": "Кардиозона", "k53": "Стартовая программа тренировок", "k54": "Выбрать", "k55": "Самый популярный", "k56": "Полный доступ в клуб и на все занятия", "k57": "Всё из абонемента Base", "k58": "Все групповые занятия", "k59": "Фитнес-оценка раз в квартал", "k60": "Персональное сопровождение", "k61": "Всё из абонемента Total", "k62": "2 персональные тренировки в месяц", "k63": "Консультация по питанию", "k64": "Полотенце и шкафчик включены", "k65": "Бесплатная регистрация в этом месяце.", "k66": "Без обязательств на ежемесячных абонементах.", "k67": "Групповые <span>занятия</span>", "k68": "Бронируйте занятия в приложении не позднее чем за 24 часа. Все занятия включены в абонементы Total и Premium.", "k69": "Понедельник", "k70": "Вторник", "k71": "Среда", "k72": "Четверг", "k73": "Пятница", "k74": "Суббота", "k75": "Команда, которая <span>вас мотивирует</span>", "k76": "Сертифицированные профессионалы, увлечённые тренировками и сосредоточенные на ваших целях.", "k77": "Силовые · Персональный тренер", "k78": "HIIT · Функциональный тренинг", "k79": "Бокс · Cycling", "k80": "Результаты", "k81": "Кто тренируется здесь, <span>чувствует разницу</span>", "k82": "за 6 месяцев", "k83": "мышечной массы", "k84": "Ноль боли", "k85": "в спине", "k86": "«Мне никогда не удавалось придерживаться режима. С программой моего тренера и занятиями HIIT наконец получилось.»", "k87": "В клубе 1 год", "k88": "«Отличное оборудование, а команда всегда готова поправить технику. Лучший зал, где я тренировался.»", "k89": "В клубе 2 года", "k90": "«Я начала пилатес из-за боли в спине, а теперь чувствую себя другим человеком. Фантастическая атмосфера.»", "k91": "В клубе 8 месяцев", "k92": "Попробуйте бесплатно", "k93": "7 дней <span>за наш счёт</span>", "k94": "Без обязательств и без карты. Оставьте свои данные, и мы отправим вам пропуск в WhatsApp.", "k95": "Имя", "k96": "Возраст", "k97": "Цель", "k98": "Похудеть", "k99": "Набрать мышечную массу", "k100": "Улучшить физическую форму", "k101": "Здоровье и самочувствие", "k102": "Когда вам удобнее тренироваться?", "k103": "Утро", "k104": "Обеденный перерыв", "k105": "Вечер", "k106": "Выходные", "k107": "Направление, которое хотите попробовать", "k108": "💬 Получить бесплатный пропуск", "k109": "Отвечаем в тот же день.", "k110": "Частые вопросы", "k111": "Есть вопросы? <span>Мы ответим</span>", "k112": "Я никогда не тренировался в зале. Можно начать?", "k113": "Конечно! В первый день тренер покажет вам зал, объяснит, как работают тренажёры, и составит программу специально для вас.", "k114": "Есть ли минимальный срок?", "k115": "Не на ежемесячных абонементах. Вы можете отменить в любой момент, предупредив за 30 дней.", "k116": "Нужно ли бронировать занятия?", "k117": "Да, количество мест на групповых занятиях ограничено. Бронируйте в приложении или на ресепшене не позднее чем за 24 часа.", "k118": "Есть ли скидки для студентов или семей?", "k119": "Да. Студенты до 25 лет получают скидку 15%, а для пар и семей действуют специальные условия.", "k120": "Где мы", "k121": "Адрес", "k122": "Телефон", "k123": "Email", "k124": "Когда мы открыты", "k125": "Понедельник – пятница", "k126": "Воскресенье", "k127": "Фитнес-клуб с силовыми тренировками, групповыми занятиями и персональными тренировками. Тренируйтесь с энергией каждый день.", "k128": "Все права защищены"}, "ja": {"k0": "プログラム", "k1": "料金プラン", "k2": "スケジュール", "k3": "トレーナー", "k4": "お問い合わせ", "k5": "無料体験", "k6": "リスボンのジム", "k7": "毎日、<span>もっと強く。</span>", "k8": "最高の設備、エネルギーあふれるグループレッスン、そしてあなたの力を引き出すトレーナー。目標への一歩はここから。", "k9": "7日間無料で体験", "k10": "料金プランを見る", "k11": "毎日営業", "k12": "週あたりのレッスン数", "k13": "トレーニングエリア", "k14": "日間無料", "k15": "あなたにぴったりの<span>トレーニングを</span>", "k16": "どんな目標でも、そこへ導くプログラムがあります。", "k17": "筋力", "k18": "ウエイトトレーニング", "k19": "120台以上のマシンと、あらゆるレベルに対応したフリーウエイトエリア。", "k20": "高強度", "k21": "ファンクショナルトレーニング", "k22": "全身を鍛えるダイナミックなサーキットを少人数で。", "k23": "有酸素", "k24": "大音量の音楽、照明、そして満ちあふれるエネルギー。45分があっという間です。", "k25": "バランス", "k26": "ヨガ&ピラティス", "k27": "柔軟性、姿勢、呼吸で心と体のバランスを整えます。", "k28": "格闘技", "k29": "ボクシング", "k30": "テクニック、有酸素運動、ストレス解消。初心者にも最適です。", "k31": "燃焼", "k32": "高強度インターバルトレーニング:30分で最大の効果を。", "k33": "PULSOが選ばれる理由", "k34": "もっと先へ<span>進むためのすべて</span>", "k35": "パーソナルトレーニング", "k36": "認定トレーナーによる個別プランで、より早く結果を。", "k37": "トレーニングアプリ", "k38": "プラン、レッスン予約、進捗をいつでもスマホで。", "k39": "体力測定", "k40": "体組成と体力テストで進捗を数値化。", "k41": "サウナ付き更衣室", "k42": "広々とした更衣室、ロッカー、トレーニング後の回復に最適なサウナ。", "k43": "駐車場", "k44": "トレーニング中は会員専用駐車場が無料。", "k45": "栄養指導", "k46": "栄養士によるカウンセリングで結果をさらに高めます。", "k47": "あなたに合った<span>プランを</span>", "k48": "シンプルな月額料金で追加費用なし。プラン変更はいつでも可能です。", "k49": "自分のペースでトレーニングしたい方に", "k50": "/月", "k51": "ウエイトエリア利用し放題", "k52": "有酸素エリア", "k53": "初回トレーニングプラン", "k54": "このプランを選ぶ", "k55": "いちばん人気", "k56": "ジムとすべてのレッスンを利用可能", "k57": "Baseプランの全内容", "k58": "すべてのグループレッスン", "k59": "3か月ごとの体力測定", "k60": "パーソナルサポート", "k61": "Totalプランの全内容", "k62": "月2回のパーソナルトレーニング", "k63": "栄養カウンセリング", "k64": "タオル・ロッカー込み", "k65": "今月は入会金無料。", "k66": "月額プランは契約期間の縛りなし。", "k67": "グループ<span>レッスン</span>", "k68": "レッスンはアプリで24時間前まで予約できます。すべてのレッスンはTotalおよびPremiumプランに含まれます。", "k69": "月曜日", "k70": "火曜日", "k71": "水曜日", "k72": "木曜日", "k73": "金曜日", "k74": "土曜日", "k75": "あなたを<span>後押しするチーム</span>", "k76": "トレーニングを愛し、あなたの目標に集中する認定プロフェッショナルたち。", "k77": "ウエイト · パーソナルトレーナー", "k78": "HIIT · ファンクショナル", "k79": "ボクシング · Cycling", "k80": "成果", "k81": "ここで鍛える人は<span>違いを実感しています</span>", "k82": "6か月で", "k83": "の筋肉量アップ", "k84": "痛みゼロ", "k85": "腰痛が解消", "k86": "「今まで習慣を続けられたことがありませんでした。トレーナーのプランとHIITのレッスンで、ついに達成できました。」", "k87": "会員歴1年", "k88": "「設備は最高で、スタッフがいつでもフォームを直してくれます。今までで最高のジムです。」", "k89": "会員歴2年", "k90": "「腰痛がきっかけでピラティスを始め、今では生まれ変わった気分です。雰囲気も最高です。」", "k91": "会員歴8か月", "k92": "無料体験", "k93": "7日間<span>無料でご招待</span>", "k94": "契約もカードも不要。ご連絡先をいただければ、WhatsAppでパスをお送りします。", "k95": "お名前", "k96": "年齢", "k97": "目的", "k98": "減量", "k99": "筋肉をつけたい", "k100": "体力をつけたい", "k101": "健康とウェルビーイング", "k102": "いつトレーニングしたいですか?", "k103": "朝", "k104": "昼休み", "k105": "夕方", "k106": "週末", "k107": "体験したいプログラム", "k108": "💬 無料パスをリクエスト", "k109": "当日中にお返事します。", "k110": "よくあるご質問", "k111": "ご質問に<span>お答えします</span>", "k112": "ジムに通ったことがありません。始められますか?", "k113": "もちろんです!初日にトレーナーが館内をご案内し、マシンの使い方を説明して、あなたに合ったプランを作成します。", "k114": "契約期間の縛りはありますか?", "k115": "月額プランにはありません。30日前までにお知らせいただければいつでも解約できます。", "k116": "レッスンは予約が必要ですか?", "k117": "はい、グループレッスンは定員制です。アプリまたは受付で24時間前まで予約できます。", "k118": "学生割引や家族割引はありますか?", "k119": "はい。25歳までの学生は15%オフ、カップルやご家族向けの特別料金もあります。", "k120": "アクセス", "k121": "住所", "k122": "電話", "k123": "メール", "k124": "営業時間", "k125": "月曜日〜金曜日", "k126": "日曜日", "k127": "ウエイトトレーニング、グループレッスン、パーソナルトレーニングのジム。毎日をエネルギッシュに。", "k128": "無断転載禁止"}, "zh": {"k0": "课程项目", "k1": "会员方案", "k2": "课程表", "k3": "教练团队", "k4": "联系我们", "k5": "免费体验", "k6": "里斯本健身房", "k7": "每天<span>更强大。</span>", "k8": "顶级器械、充满活力的团课,以及激发你潜能的教练。你的目标从这里开始。", "k9": "免费体验7天", "k10": "查看会员方案", "k11": "每天营业", "k12": "每周课程", "k13": "训练面积", "k14": "天免费", "k15": "找到<span>最适合你的训练</span>", "k16": "无论你的目标是什么,我们都有相应的课程助你实现。", "k17": "力量", "k18": "力量训练", "k19": "120多台器械和自由重量区,适合各个水平。", "k20": "强度", "k21": "功能性训练", "k22": "小班动态循环训练,锻炼全身。", "k23": "有氧", "k24": "动感音乐、灯光和满满能量,45分钟转眼即逝。", "k25": "平衡", "k26": "瑜伽与普拉提", "k27": "提升柔韧性、改善体态、调整呼吸,平衡身心。", "k28": "格斗", "k29": "拳击", "k30": "技巧、有氧和释放压力,非常适合初学者。", "k31": "燃脂", "k32": "高强度间歇训练:30分钟,效果最大化。", "k33": "为什么选择PULSO", "k34": "一切只为<span>走得更远</span>", "k35": "私人教练", "k36": "认证教练定制个人计划,更快见效。", "k37": "训练App", "k38": "你的计划、课程预约和进度,随时在手机上查看。", "k39": "体能评估", "k40": "通过体成分和体能测试衡量你的进步。", "k41": "带桑拿的更衣室", "k42": "宽敞的更衣室、储物柜和桑拿,训练后好好恢复。", "k43": "停车场", "k44": "会员训练期间免费停车。", "k45": "营养指导", "k46": "营养师咨询,助你提升训练效果。", "k47": "选择你的<span>会员方案</span>", "k48": "简单的月费,没有意外收费。随时可更换方案。", "k49": "适合自主训练的人", "k50": "/月", "k51": "自由使用力量训练区", "k52": "有氧区", "k53": "入门训练计划", "k54": "选择方案", "k55": "最受欢迎", "k56": "完整使用健身房和所有课程", "k57": "包含Base方案全部内容", "k58": "所有团课", "k59": "每季度体能评估", "k60": "个性化指导", "k61": "包含Total方案全部内容", "k62": "每月2次私教课", "k63": "营养咨询", "k64": "含毛巾和储物柜", "k65": "本月免入会费。", "k66": "月付方案无绑定期限。", "k67": "团体<span>课程</span>", "k68": "请提前24小时在App中预约课程。所有课程均包含在Total和Premium方案中。", "k69": "周一", "k70": "周二", "k71": "周三", "k72": "周四", "k73": "周五", "k74": "周六", "k75": "激励你<span>前进的团队</span>", "k76": "热爱训练、专注于你目标的认证专业人士。", "k77": "力量训练 · 私人教练", "k78": "HIIT · 功能性训练", "k79": "拳击 · Cycling", "k80": "训练成果", "k81": "在这里训练的人<span>都感受到了改变</span>", "k82": "6个月内", "k83": "肌肉增长", "k84": "零疼痛", "k85": "告别背痛", "k86": "“我以前从来坚持不了规律训练。有了教练的计划和HIIT课程,我终于做到了。”", "k87": "会员1年", "k88": "“器械一流,团队随时帮你纠正动作。这是我练过的最好的健身房。”", "k89": "会员2年", "k90": "“我因为背痛开始练普拉提,现在感觉像换了一个人。氛围超棒。”", "k91": "会员8个月", "k92": "免费体验", "k93": "7天<span>由我们买单</span>", "k94": "无需承诺,无需银行卡。留下你的信息,我们会通过WhatsApp把体验卡发给你。", "k95": "姓名", "k96": "年龄", "k97": "目标", "k98": "减重", "k99": "增肌", "k100": "提升体能", "k101": "健康与身心平衡", "k102": "你更喜欢什么时候训练?", "k103": "早上", "k104": "午休时间", "k105": "傍晚", "k106": "周末", "k107": "想体验的课程", "k108": "💬 领取我的免费体验卡", "k109": "当天回复。", "k110": "常见问题", "k111": "有疑问?<span>我们来解答</span>", "k112": "我从没去过健身房,可以开始吗?", "k113": "当然!第一天会有教练带你熟悉场地、讲解器械使用,并为你制定专属计划。", "k114": "有绑定期限吗?", "k115": "月付方案没有。只需提前30天通知即可随时取消。", "k116": "需要预约课程吗?", "k117": "需要,团课名额有限。可在App或前台提前24小时预约。", "k118": "学生或家庭有优惠吗?", "k119": "有。25岁以下学生享85折,情侣和家庭也有特别优惠。", "k120": "我们的位置", "k121": "地址", "k122": "电话", "k123": "邮箱", "k124": "营业时间", "k125": "周一至周五", "k126": "周日", "k127": "提供力量训练、团课和私人教练的健身房。每天都充满能量地训练。", "k128": "版权所有"}};
+  const LANG_FLAGS = {"pt": "https://flagcdn.com/w40/pt.png", "en": "https://flagcdn.com/w40/gb.png", "es": "https://flagcdn.com/w40/es.png", "fr": "https://flagcdn.com/w40/fr.png", "it": "https://flagcdn.com/w40/it.png", "de": "https://flagcdn.com/w40/de.png", "uk": "https://flagcdn.com/w40/ua.png", "ru": "https://flagcdn.com/w40/ru.png", "ja": "https://flagcdn.com/w40/jp.png", "zh": "https://flagcdn.com/w40/cn.png"};
+  const ptText = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => { ptText[el.dataset.i18n] = el.innerHTML; });
+  const langBox = document.getElementById('lang');
+  function setLang(lang) {
+    if (lang !== 'pt' && !I18N[lang]) lang = 'pt';
+    const dict = I18N[lang] || {};
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.dataset.i18n; el.innerHTML = dict[k] ?? ptText[k]; });
+    document.documentElement.lang = lang === 'pt' ? 'pt-PT' : lang;
+    document.getElementById('langFlag').src = LANG_FLAGS[lang];
+    document.getElementById('langCode').textContent = lang.toUpperCase();
+    document.querySelectorAll('#langMenu button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+  document.getElementById('langBtn').addEventListener('click', e => {
+    e.stopPropagation();
+    const open = langBox.classList.toggle('open');
+    e.currentTarget.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('#langMenu button').forEach(b => b.addEventListener('click', () => { setLang(b.dataset.lang); langBox.classList.remove('open'); }));
+  document.addEventListener('click', () => langBox.classList.remove('open'));
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  setLang(saved || (navigator.language || 'pt').slice(0, 2));
+</script>
+</body>
+</html>
